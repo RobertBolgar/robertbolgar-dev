@@ -15,7 +15,8 @@ const Projects = () => {
     {
       name: 'TubeLinkr',
       description: 'A creator-focused link and video hub project built around YouTube workflows.',
-      status: 'Existing Project'
+      status: 'Existing Project',
+      link: 'https://rob.tubelinkr.com/invite/c1'
     }
   ];
 
@@ -30,7 +31,13 @@ const Projects = () => {
         <div className="project-grid">
           {projects.map((project, index) => (
             <div key={index} className="project-card">
-              <h3 className="project-name">{project.name}</h3>
+              <h3 className="project-name">
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noreferrer">{project.name}</a>
+                ) : (
+                  project.name
+                )}
+              </h3>
               <p className="project-description">{project.description}</p>
               <span className={`project-status project-status-${project.status.toLowerCase().replace(' ', '-')}`}>
                 {project.status}
