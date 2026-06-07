@@ -5,6 +5,7 @@ import Videos from './components/Videos';
 import Projects from './components/Projects';
 import Devlog from './components/Devlog';
 import About from './components/About';
+import WhatIsSite from './components/WhatIsSite';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -17,6 +18,7 @@ function App() {
       <Projects />
       <Devlog />
       <About />
+      <WhatIsSite />
       <Footer />
     </div>
   );

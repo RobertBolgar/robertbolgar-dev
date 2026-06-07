@@ -570,6 +570,37 @@ a:hover {
   line-height: 1.85;
 }
 
+/* What Is Site */
+.what-is-site {
+  background: transparent;
+  position: relative;
+}
+
+.what-is-site::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.what-is-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.what-is-text {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  text-align: center;
+}
+
 /* Footer */
 .footer {
   background: transparent;

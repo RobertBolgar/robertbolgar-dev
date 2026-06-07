@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="hero-container">
         <p className="hero-eyebrow">Building Publicly With AI</p>
         <h1 className="hero-headline">
-          I'm building real internet products with AI tools — and documenting the entire journey.
+          Robert Bolgar is building real internet products with AI tools — and documenting the entire journey.
         </h1>
         <p className="hero-subheadline">
           No guru act. No fake overnight success story. Just experiments, products, mistakes, pivots, launches, and lessons shared in public.
