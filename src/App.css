@@ -188,6 +188,12 @@ a:hover {
   letter-spacing: 0.01em;
   margin-bottom: 2.5rem;
   color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-headline-accent {
+  color: var(--orange);
 }
 
 .hero-subheadline {
