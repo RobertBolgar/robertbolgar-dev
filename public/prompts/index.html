@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Initial ChatGPT Prompts | Robert Bolgar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --charcoal: #111111;
+      --card: #161616;
+      --border: #242424;
+      --orange: #f05a1a;
+      --white: #f5f5f5;
+      --muted: #777;
+      --muted2: #3a3a3a;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .section {
+      margin-top: 4rem;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--orange);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.75rem;
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .card-description {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      border: 1px solid var(--orange);
+    }
+
+    .btn-primary:hover {
+      background: #d64d15;
+      border-color: #d64d15;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .secondary-link {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted2);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+
+    .secondary-link:hover {
+      color: var(--orange);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 3rem 1.5rem;
+      }
+
+      .card {
+        padding: 2rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Initial ChatGPT Prompts</h1>
+      <p class="subtitle">Every project starts with a prompt.</p>
+      <p class="intro">
+        These are the original ChatGPT prompts used to define projects, establish direction, and begin the public building process before Devin starts executing.
+      </p>
+    </header>
+
+    <section class="section">
+      <p class="section-label">Episode 01</p>
+      
+      <div class="card">
+        <h2 class="card-title">The Prompt That Started Episode 01</h2>
+        <p class="card-description">
+          The original ChatGPT prompt used to define the robertbolgar.dev rebuild, establish the public-building direction, and generate the Devin prompts used throughout the episode.
+        </p>
+        <div class="buttons">
+          <a href="/prompts/ep01/initial-chatgpt-prompt.txt" target="_blank" class="btn btn-primary">View</a>
+          <a href="/prompts/ep01/initial-chatgpt-prompt.txt" download class="btn btn-secondary">Download</a>
+        </div>
+        <a href="/prompts/ep01/episode-01-prompts.txt" class="secondary-link">
+          Complete Episode 01 Prompt Archive →
+        </a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

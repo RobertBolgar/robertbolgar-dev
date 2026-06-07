@@ -7,9 +7,20 @@ import Devlog from './components/Devlog';
 import About from './components/About';
 import WhatIsSite from './components/WhatIsSite';
 import Footer from './components/Footer';
+import PromptsPage from './components/PromptsPage';
 import './App.css';
 
 function App() {
+  const pathname = window.location.pathname;
+
+  if (pathname === '/prompts' || pathname === '/prompts/') {
+    return (
+      <div className="app">
+        <PromptsPage />
+      </div>
+    );
+  }
+
   return (
     <div className="app">
       <Nav />

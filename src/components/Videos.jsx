@@ -9,10 +9,18 @@ const Videos = () => {
       description: 'Turning robertbolgar.dev from a placeholder site into the public home base for my building journey.',
       youtubeUrl: 'https://youtube.com',
       videoId: null,
-      promptFile: {
-        title: 'Episode 1 Prompts',
-        file: '/prompts/ep01/episode-01-prompts.txt'
-      }
+      promptFiles: [
+        {
+          title: 'The Prompt That Started Episode 01',
+          description: 'Initial ChatGPT planning prompt',
+          file: '/prompts/ep01/initial-chatgpt-prompt.txt'
+        },
+        {
+          title: 'Complete Episode 01 Prompt Archive',
+          description: '10 Devin prompts used to build and polish the site',
+          file: '/prompts/ep01/episode-01-prompts.txt'
+        }
+      ]
     }
   ];
 
@@ -55,15 +63,20 @@ const Videos = () => {
                 Watch on YouTube
               </a>
               <div className="video-prompts">
-                <h4 className="video-prompts-heading">Episode Prompt File</h4>
+                <h4 className="video-prompts-heading">PROMPT RESOURCES</h4>
                 <div className="video-prompt-list">
-                  <div className="video-prompt">
-                    <span>{episode.promptFile.title}</span>
-                    <div className="video-prompt-actions">
-                      <a href={episode.promptFile.file} target="_blank" rel="noreferrer">View</a>
-                      <a href={episode.promptFile.file} download>Download</a>
+                  {episode.promptFiles.map((prompt) => (
+                    <div key={prompt.file} className="video-prompt-card">
+                      <div className="video-prompt-info">
+                        <span className="video-prompt-title">{prompt.title}</span>
+                        <span className="video-prompt-description">{prompt.description}</span>
+                      </div>
+                      <div className="video-prompt-actions">
+                        <a href={prompt.file} target="_blank" rel="noreferrer" className="video-prompt-btn">View</a>
+                        <a href={prompt.file} download className="video-prompt-btn">Download</a>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
