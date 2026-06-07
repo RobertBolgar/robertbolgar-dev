@@ -1,6 +1,684 @@
 ﻿Episode 01 Prompts
 Robert Bolgar — Building Publicly With AI
 
+Overview:
+This file contains the prompts used during Episode 1 while building the first launch version of robertbolgar.dev.
+
+Prompts:
+
+------------------------------------------------------------
+
+1. Website Build Thread Starter Prompt
+
+[ACTUAL PROMPT]
+
+Build robertbolgar.dev launch version as a single-page React + Vite site with plain CSS, no UI frameworks, CMS, or extra pages. The site is a public home base for Robert Bolgar's YouTube channel and building journey.
+
+Create the following sections:
+- Nav: Logo text "Robert Bolgar", links to Videos, Projects, Devlog, About, and a "Subscribe" CTA button
+- Hero: Eyebrow "Building Publicly With AI", headline, subheadline, primary/secondary buttons, status line
+- Videos: Heading, copy, 3 video placeholder cards with episode, title, description, status
+- Projects: Heading, copy, project cards with name, description, status
+- Devlog: Heading, copy, 3 simple devlog entries
+- About: Heading, two paragraphs about Robert Bolgar
+- Footer: Brand text and footer links
+
+Use these CSS variables:
+--black: #0a0a0a
+--white: #ffffff
+--orange: #f05a1a
+--muted: #888888
+--muted2: #666666
+--border: #242424
+--charcoal: #141414
+--card: #161616
+
+Use Google Fonts:
+- Bebas Neue (headings)
+- DM Sans (body)
+- DM Mono (monospace/eyebrows)
+
+Add SEO metadata, Open Graph, Twitter cards, robots.txt, sitemap.xml, and llms.txt.
+
+Keep the design minimal, dark-themed, and mobile-first.
+
+------------------------------------------------------------
+
+2. Hero and Design Refinement Prompt
+
+[ACTUAL PROMPT]
+
+Refine Homepage Design
+
+The user wants to refine the existing homepage design of robertbolgar.dev to make it feel like a "premium public-building media brand" instead of a "developer portfolio." The main goal is to increase visual impact, improve layout and typography, and add subtle background interest while maintaining responsiveness and avoiding visual clutter.
+
+Specific Hero improvements:
+- Increase padding
+- Larger headline on desktop
+- Better spacing
+- Reduced paragraph width
+- More spacing around buttons
+
+Layout improvements:
+- Increase vertical spacing
+- Reduce stacked card feel
+- Subtle section separation
+
+Card improvements:
+- Subtle lift
+- Orange border glow
+- Slight translateY on hover
+- Improved typography hierarchy
+
+Typography hierarchy:
+- Largest: hero
+- Second largest: section headings
+- Third largest: card titles
+- Smaller: body text
+- Smallest: muted text
+
+Add orange eyebrow labels above section headings.
+
+Background improvements:
+- Subtle radial gradients or soft orange glow accents
+- Maintain dark minimal theme
+
+Remove restrictive page-frame feeling, make site feel open and cinematic.
+
+Maintain mobile responsiveness and consistent spacing.
+
+After implementation, check mobile responsiveness, spacing consistency, and remove visual clutter.
+
+Final goal: site should immediately communicate public documentation of building products, not a freelance developer portfolio.
+
+------------------------------------------------------------
+
+3. Layout and Alignment Improvements Prompt
+
+[ACTUAL PROMPT]
+
+Fix the alignment issues on the homepage.
+
+The current design looks good overall, but some text areas and card grids are pushed too far to one side.
+
+Goal:
+Make all sections feel intentionally centered and balanced.
+
+Do not redesign the site.
+Do not change the content.
+Do not add new sections.
+
+Fix layout alignment for:
+- Latest Videos section
+- Projects I'm Building section
+- Devlog section
+- About Robert section
+- Footer if needed
+
+Requirements:
+1. Create consistent section containers
+- Each major section should use the same max-width container.
+- Section headings and intro paragraphs should be centered.
+- Card grids should align cleanly under the section header.
+- Avoid text blocks sitting too far left unless intentionally designed.
+
+2. Fix card grid alignment
+- Videos and Projects cards should center within their section.
+- On desktop, cards should use a balanced grid.
+- On tablet/mobile, cards should stack cleanly.
+- Do not leave a single card awkwardly stuck on the left if the row is incomplete.
+- Center incomplete rows when there are only 3 cards in a 2-column layout.
+
+3. Devlog alignment
+- Keep the devlog readable.
+- The heading and intro text should be centered.
+- The devlog list can be left-aligned, but it should sit inside a centered max-width container.
+
+4. About alignment
+- Center the heading and body copy.
+- Keep the text width narrow enough to read comfortably.
+
+5. Footer alignment
+- Make sure footer content is balanced.
+- It should not feel pushed against either side.
+
+CSS guidance:
+- Use reusable classes like .section, .section-inner, .section-header, .section-copy, .card-grid.
+- Prefer max-width, margin: 0 auto, and consistent padding.
+- Avoid hard-coded left margins that break alignment.
+- Keep the current dark premium style.
+
+After implementation:
+- Check desktop layout.
+- Check tablet layout.
+- Check mobile layout.
+- Confirm headings, intro text, cards, devlog, and footer feel centered and balanced.
+- Give me a brief summary of what changed.
+
+------------------------------------------------------------
+
+4. GitHub Repository Setup Prompt
+
+[ACTUAL PROMPT]
+
+I want to back up this project to GitHub.
+
+Please:
+
+1. Check whether GitHub is already connected/authenticated.
+
+2. If GitHub is connected:
+- Create a new repository named: robertbolgar-dev
+- Make it public.
+- Initialize the repository.
+- Commit all current project files.
+- Push the code to the new GitHub repository.
+- Return the repository URL.
+
+3. If GitHub is NOT connected:
+- Tell me exactly what authentication step is required.
+- Do not make any code changes.
+- Wait for authentication and then continue.
+
+4. Before pushing:
+- Verify node_modules is ignored.
+- Verify dist is ignored.
+- Verify .env files are ignored.
+- Create or update .gitignore if necessary.
+
+5. Create an initial commit message:
+Initial launch foundation for robertbolgar.dev
+
+6. After push:
+- Confirm the repository exists.
+- Confirm the branch was pushed successfully.
+- Provide the GitHub URL.
+- Summarize any files changed during setup.
+
+Do not modify the website design or content.
+Only perform GitHub repository setup and backup.
+
+------------------------------------------------------------
+
+5. AI Search Foundation Prompt
+
+[ACTUAL PROMPT]
+
+Improve the AI-search foundation of robertbolgar.dev.
+
+Goal:
+
+Help AI systems and search engines clearly understand:
+- Who Robert Bolgar is
+- What robertbolgar.dev is
+- What the YouTube channel is about
+- What projects are being built
+- Why the website exists
+
+Do not redesign the site.
+Do not add new pages.
+Do not add a blog.
+Do not add a newsletter.
+Do not add accounts.
+Focus on structured information.
+
+1. ADD JSON-LD SCHEMA
+
+Add schema markup to the homepage.
+
+Include:
+Person
+Website
+Organization (personal brand)
+
+Use information available on the site.
+
+Person name: Robert Bolgar
+Website: https://robertbolgar.dev
+Description: Robert Bolgar publicly documents the process of building internet products using modern AI tools. The website serves as the home base for videos, projects, experiments, launches, and development updates.
+
+2. IMPROVE META TAGS
+
+Enhance SEO metadata.
+
+Title: Robert Bolgar | Building Publicly With AI
+
+Description: Follow Robert Bolgar as he builds real internet products using modern AI tools and documents the process through videos, projects, experiments, launches, and lessons learned.
+
+Add:
+- Open Graph tags
+- Twitter Card tags
+- canonical URL
+
+3. ADD A "WHAT THIS SITE IS" SECTION
+
+Place directly above the footer.
+
+Heading: What Is RobertBolgar.dev?
+
+Body: RobertBolgar.dev is the public home base for Robert Bolgar's product-building journey. The site documents videos, projects, experiments, launches, mistakes, lessons, and progress while building real internet products with modern AI tools. Unlike coding tutorial channels or AI news sites, the focus is on documenting the complete process of creating and shipping products publicly.
+
+This section should look clean and match the design.
+
+4. IMPROVE llms.txt
+
+Expand llms.txt with structured sections.
+
+Include:
+# Robert Bolgar - Who Robert Bolgar is
+# Website Purpose - What the website exists for
+# YouTube Channel - What content is published
+# Projects - Current projects
+# Audience - Who the content is for
+# Topics - AI-assisted product development, Public building, Startup experiments, Product launches, Project documentation, Creator tools, Internet businesses
+
+Keep language plain and factual.
+
+5. IMPROVE CONTENT CLARITY
+
+Review homepage copy. Where appropriate:
+- Use "Robert Bolgar" instead of only "I"
+- Use project names explicitly
+- Use descriptive language
+
+Goal: Allow both humans and AI systems to quickly understand the website.
+
+6. VERIFY
+
+After implementation verify:
+- Schema is valid
+- Metadata exists
+- Canonical URL exists
+- llms.txt loads correctly
+- Site remains responsive
+
+Provide a summary of all AI-search improvements made.
+
+------------------------------------------------------------
+
+6. Prompt File Foundation Prompt
+
+[ACTUAL PROMPT]
+
+Create the prompt file foundation for future episodes.
+
+Requirements:
+
+1. Create: public/prompts/
+
+2. Create: public/prompts/README.txt
+
+Content: This directory contains the prompts used during the public building process documented on the Robert Bolgar YouTube channel. Prompts are organized by episode and project. These files are provided for educational purposes and to document the exact AI-assisted workflow used during development.
+
+3. Create: public/prompts/ep01/
+
+4. Create: public/prompts/ep01/episode-01-prompts.txt
+
+Add a placeholder heading: Episode 1, Building RobertBolgar.dev, Prompt archive coming soon.
+
+5. Do not add navigation links yet.
+6. Do not add download buttons yet.
+7. Only create the file structure and commit it.
+
+After completion:
+- Verify files load publicly.
+- Provide the URLs for each file.
+
+------------------------------------------------------------
+
+7. Hero Messaging Update Prompt
+
+[ACTUAL PROMPT]
+
+Update the Hero section copy to better align with the brand.
+
+The current headline focuses too much on Robert Bolgar personally.
+
+The brand is not about me.
+
+The brand is about the journey of building products publicly with AI.
+
+Replace the current hero headline:
+
+"ROBERT BOLGAR IS BUILDING REAL INTERNET PRODUCTS WITH AI TOOLS — AND DOCUMENTING THE ENTIRE JOURNEY."
+
+With:
+
+IDEAS.
+PRODUCTS.
+JOURNEY.
+
+Display each word on its own line.
+
+Style requirements:
+
+- Use Bebas Neue
+- Large, bold, high-impact typography
+- JOURNEY. should use the brand orange color
+- Maintain current responsive behavior
+- Preserve existing spacing rhythm and visual hierarchy
+
+Replace the current supporting copy with:
+
+Building modern internet products using AI-assisted workflows.
+
+Exploring ideas, improving systems, and sharing the journey publicly.
+
+The goal is:
+
+- simpler
+- cleaner
+- less ego-driven
+- more brand-focused
+- more memorable
+- easier to scan in under 3 seconds
+
+Do not change the overall Hero layout.
+Do not change buttons.
+Do not change animations.
+Only improve the messaging and typography hierarchy to match the updated brand direction.
+
+------------------------------------------------------------
+
+8. Videos Section Prompt System Update
+
+[ACTUAL PROMPT]
+
+Replace all placeholder content in the Videos section with a real Episode 1 system that is designed to support the YouTube channel.
+
+GOAL
+
+The website should feel alive and connected to real content.
+
+The channel is the engine.
+
+The website supports the channel.
+
+VIDEOS SECTION UPDATES
+
+Rename section description to:
+
+"Follow the process as I plan, build, test, launch, and improve real products using modern AI tools."
+
+Keep existing design system and layout.
+
+VIDEO CARD STRUCTURE
+
+Each video card should support:
+
+- Thumbnail image
+- Episode number
+- Title
+- Publish date
+- Description
+- Watch button
+- Prompt downloads
+
+Build the component so adding future episodes is simple.
+
+Use a JavaScript array of episode objects and render cards dynamically.
+
+EPISODE 1
+
+Title:
+
+Building My Website Live With AI
+
+Episode:
+
+EP 01
+
+Date:
+
+June 2026
+
+Description:
+
+Turning robertbolgar.dev from a placeholder site into the public home base for my building journey.
+
+Watch Button:
+
+Watch on YouTube
+
+Link should open in a new tab.
+
+Use placeholder URL for now:
+
+https://youtube.com
+
+THUMBNAIL SYSTEM
+
+Support YouTube thumbnails using:
+
+https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg
+
+Create the thumbnail component structure now.
+
+Use a temporary placeholder image until the real video ID is available.
+
+16:9 aspect ratio.
+
+Dark overlay on hover.
+
+Subtle scale effect on hover.
+
+No embedded videos.
+
+All views should happen on YouTube.
+
+PROMPTS USED
+
+Add a section inside Episode 1:
+
+Prompts Used This Episode
+
+Include:
+
+1. Website Build Thread Prompt
+2. Hero Section Prompt
+
+Each prompt should have:
+
+- View
+- Download
+
+Prompt files should come from:
+
+public/prompts/ep01/
+
+Example:
+
+public/prompts/ep01/website-build-thread.txt
+
+public/prompts/ep01/hero-section.txt
+
+VIEW BUTTON
+
+View should open the text file in a new tab.
+
+DOWNLOAD BUTTON
+
+Download should directly download the file.
+
+FUTURE READY
+
+Structure the component so future episodes can be added by updating the episode array only.
+
+Do not add:
+
+- CMS
+- database
+- backend
+- admin panel
+- authentication
+
+Keep everything static.
+
+DESIGN REQUIREMENTS
+
+Maintain existing brand system:
+
+- black
+- charcoal
+- orange
+- white
+
+Fonts:
+
+- Bebas Neue
+- DM Sans
+- DM Mono
+
+Style:
+
+- premium
+- minimal
+- cinematic
+
+Match the rest of the site.
+
+Do not redesign the page.
+
+Only upgrade the Videos section from placeholders to a real content system.
+
+------------------------------------------------------------
+
+9. Episode Prompt File Simplification Prompt
+
+[ACTUAL PROMPT]
+
+Update the Videos section prompt download system.
+
+Right now Episode 1 has multiple prompt files listed separately.
+
+Simplify this.
+
+Each episode should have only ONE prompt file.
+
+For Episode 1, use:
+
+Episode 1 Prompt File
+
+File path:
+
+/prompts/ep01/episode-01-prompts.txt
+
+Update the UI text from:
+
+"Prompts Used This Episode"
+
+to:
+
+"Episode Prompt File"
+
+Show only one row:
+
+Episode 1 Prompts
+
+Buttons:
+
+View
+Download
+
+View opens:
+
+/prompts/ep01/episode-01-prompts.txt
+
+in a new tab.
+
+Download uses the same file path and the HTML download attribute.
+
+Remove the separate rows for:
+
+- Website Build Thread Prompt
+- Hero Section Prompt
+
+Do not change the overall Videos section layout.
+
+Do not redesign the site.
+
+Only simplify the prompt download system so each episode has one clean downloadable text file.
+
+Also create the placeholder file at:
+
+public/prompts/ep01/episode-01-prompts.txt
+
+Inside it, add:
+
+Episode 01 Prompts
+Robert Bolgar — Building Publicly With AI
+
 This file will contain every prompt used during Episode 1.
 
 Prompts will be added after the episode is completed.
+
+------------------------------------------------------------
+
+10. Episode Prompt File Archive Update
+
+[ACTUAL PROMPT]
+
+Safely update the Episode 1 prompt archive file.
+
+Target file:
+
+public/prompts/ep01/episode-01-prompts.txt
+
+Goal:
+
+Add the prompts used so far during Episode 1 into this single text file.
+
+Important rules:
+
+- Do not change the website design.
+- Do not change the Videos section layout.
+- Do not create multiple prompt files.
+- Do not move the prompt file.
+- Do not delete existing content unless replacing placeholder text.
+- Keep everything in one file for Episode 1.
+- Format the file so it is easy to read, copy, and download.
+
+Replace the placeholder content with a clean archive structure like this:
+
+Episode 01 Prompts
+Robert Bolgar — Building Publicly With AI
+
+Overview:
+This file contains the prompts used during Episode 1 while building the first launch version of robertbolgar.dev.
+
+Prompts:
+
+1. Website Build Thread Starter Prompt
+[paste the full starter prompt used to set up the ChatGPT build thread]
+
+2. Hero Messaging Update Prompt
+[paste the prompt used to change the hero headline to IDEAS. PRODUCTS. JOURNEY.]
+
+3. Videos Section Prompt System Update
+[paste the prompt used to simplify the Videos section to one episode prompt file]
+
+4. Episode Prompt File Archive Update
+[paste this current prompt or summarize that this archive was created]
+
+If the exact full prompt text is available in the conversation or project notes, include the full prompt text.
+
+If exact text is not available, add a clearly marked summary using:
+
+[SUMMARY OF PROMPT]
+
+Do not invent exact prompts.
+
+Use clear separators between prompts, like:
+
+------------------------------------------------------------
+
+After updating the file, verify that:
+
+- /prompts/ep01/episode-01-prompts.txt exists
+- The View button still opens the file
+- The Download button still points to the same file
+- The site still builds successfully
+
+------------------------------------------------------------
+
+END OF EPISODE 01 PROMPTS
