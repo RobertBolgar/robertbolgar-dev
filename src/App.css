@@ -626,6 +626,12 @@ a:hover {
   overflow: hidden;
 }
 
+.project-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .project-card::before {
   content: '';
   position: absolute;

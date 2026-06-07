@@ -30,19 +30,29 @@ const Projects = () => {
         </p>
         <div className="project-grid">
           {projects.map((project, index) => (
-            <div key={index} className="project-card">
-              <h3 className="project-name">
-                {project.link ? (
-                  <a href={project.link} target="_blank" rel="noreferrer">{project.name}</a>
-                ) : (
-                  project.name
-                )}
-              </h3>
-              <p className="project-description">{project.description}</p>
-              <span className={`project-status project-status-${project.status.toLowerCase().replace(' ', '-')}`}>
-                {project.status}
-              </span>
-            </div>
+            project.link ? (
+              <a
+                key={index}
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="project-card"
+              >
+                <h3 className="project-name">{project.name}</h3>
+                <p className="project-description">{project.description}</p>
+                <span className={`project-status project-status-${project.status.toLowerCase().replace(' ', '-')}`}>
+                  {project.status}
+                </span>
+              </a>
+            ) : (
+              <div key={index} className="project-card">
+                <h3 className="project-name">{project.name}</h3>
+                <p className="project-description">{project.description}</p>
+                <span className={`project-status project-status-${project.status.toLowerCase().replace(' ', '-')}`}>
+                  {project.status}
+                </span>
+              </div>
+            )
           ))}
         </div>
       </div>
