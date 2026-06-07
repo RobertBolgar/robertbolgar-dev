@@ -1,4 +1,453 @@
-Episode 1
-Building RobertBolgar.dev
+==================================================
+EPISODE 1
+BUILDING ROBERTBOLGAR.DEV
+==================================================
 
-Prompt archive coming soon.
+PROJECT OVERVIEW
+
+Episode 1 documents the initial creation of robertbolgar.dev as a single-page React + Vite website. The site serves as the public home base for Robert Bolgar's product-building journey, featuring sections for videos, projects, devlog, and about information. The design follows a premium public-building media brand aesthetic inspired by Vercel, Linear, and Stripe.
+
+Tech Stack:
+- React with functional components
+- Vite as build tool
+- Plain CSS with CSS variables
+- Google Fonts: Bebas Neue, DM Sans, DM Mono
+- No UI frameworks, CMS, or extra pages
+
+==================================================
+PROMPT 1
+INITIAL WEBSITE FOUNDATION
+==================================================
+
+[ACTUAL PROMPT]
+
+Build robertbolgar.dev launch version as a single-page React + Vite site with plain CSS, no UI frameworks, CMS, or extra pages. The site is a public home base for Robert Bolgar's YouTube channel and building journey.
+
+Create the following sections:
+- Nav: Logo text "Robert Bolgar", links to Videos, Projects, Devlog, About, and a "Subscribe" CTA button
+- Hero: Eyebrow "Building Publicly With AI", headline, subheadline, primary/secondary buttons, status line
+- Videos: Heading, copy, 3 video placeholder cards with episode, title, description, status
+- Projects: Heading, copy, project cards with name, description, status
+- Devlog: Heading, copy, 3 simple devlog entries
+- About: Heading, two paragraphs about Robert Bolgar
+- Footer: Brand text and footer links
+
+Use these CSS variables:
+--black: #0a0a0a
+--white: #ffffff
+--orange: #f05a1a
+--muted: #888888
+--muted2: #666666
+--border: #242424
+--charcoal: #141414
+--card: #161616
+
+Use Google Fonts:
+- Bebas Neue (headings)
+- DM Sans (body)
+- DM Mono (monospace/eyebrows)
+
+Add SEO metadata, Open Graph, Twitter cards, robots.txt, sitemap.xml, and llms.txt.
+
+Keep the design minimal, dark-themed, and mobile-first.
+
+==================================================
+PROMPT 2
+HERO AND DESIGN REFINEMENT
+==================================================
+
+[ACTUAL PROMPT]
+
+Refine Homepage Design
+
+The user wants to refine the existing homepage design of robertbolgar.dev to make it feel like a "premium public-building media brand" instead of a "developer portfolio." The main goal is to increase visual impact, improve layout and typography, and add subtle background interest while maintaining responsiveness and avoiding visual clutter.
+
+Specific Hero improvements:
+- Increase padding
+- Larger headline on desktop
+- Better spacing
+- Reduced paragraph width
+- More spacing around buttons
+
+Layout improvements:
+- Increase vertical spacing
+- Reduce stacked card feel
+- Subtle section separation
+
+Card improvements:
+- Subtle lift
+- Orange border glow
+- Slight translateY on hover
+- Improved typography hierarchy
+
+Typography hierarchy:
+- Largest: hero
+- Second largest: section headings
+- Third largest: card titles
+- Smaller: body text
+- Smallest: muted text
+
+Add orange eyebrow labels above section headings.
+
+Background improvements:
+- Subtle radial gradients or soft orange glow accents
+- Maintain dark minimal theme
+
+Remove restrictive page-frame feeling, make site feel open and cinematic.
+
+Maintain mobile responsiveness and consistent spacing.
+
+After implementation, check mobile responsiveness, spacing consistency, and remove visual clutter.
+
+Final goal: site should immediately communicate public documentation of building products, not a freelance developer portfolio.
+
+==================================================
+PROMPT 3
+LAYOUT AND ALIGNMENT IMPROVEMENTS
+==================================================
+
+[ACTUAL PROMPT]
+
+Fix the alignment issues on the homepage.
+
+The current design looks good overall, but some text areas and card grids are pushed too far to one side.
+
+Goal:
+Make all sections feel intentionally centered and balanced.
+
+Do not redesign the site.
+Do not change the content.
+Do not add new sections.
+
+Fix layout alignment for:
+- Latest Videos section
+- Projects I'm Building section
+- Devlog section
+- About Robert section
+- Footer if needed
+
+Requirements:
+1. Create consistent section containers
+- Each major section should use the same max-width container.
+- Section headings and intro paragraphs should be centered.
+- Card grids should align cleanly under the section header.
+- Avoid text blocks sitting too far left unless intentionally designed.
+
+2. Fix card grid alignment
+- Videos and Projects cards should center within their section.
+- On desktop, cards should use a balanced grid.
+- On tablet/mobile, cards should stack cleanly.
+- Do not leave a single card awkwardly stuck on the left if the row is incomplete.
+- Center incomplete rows when there are only 3 cards in a 2-column layout.
+
+3. Devlog alignment
+- Keep the devlog readable.
+- The heading and intro text should be centered.
+- The devlog list can be left-aligned, but it should sit inside a centered max-width container.
+
+4. About alignment
+- Center the heading and body copy.
+- Keep the text width narrow enough to read comfortably.
+
+5. Footer alignment
+- Make sure footer content is balanced.
+- It should not feel pushed against either side.
+
+CSS guidance:
+- Use reusable classes like .section, .section-inner, .section-header, .section-copy, .card-grid.
+- Prefer max-width, margin: 0 auto, and consistent padding.
+- Avoid hard-coded left margins that break alignment.
+- Keep the current dark premium style.
+
+After implementation:
+- Check desktop layout.
+- Check tablet layout.
+- Check mobile layout.
+- Confirm headings, intro text, cards, devlog, and footer feel centered and balanced.
+- Give me a brief summary of what changed.
+
+==================================================
+PROMPT 4
+GITHUB REPOSITORY SETUP
+==================================================
+
+[ACTUAL PROMPT]
+
+I want to back up this project to GitHub.
+
+Please:
+
+1. Check whether GitHub is already connected/authenticated.
+
+2. If GitHub is connected:
+- Create a new repository named: robertbolgar-dev
+- Make it public.
+- Initialize the repository.
+- Commit all current project files.
+- Push the code to the new GitHub repository.
+- Return the repository URL.
+
+3. If GitHub is NOT connected:
+- Tell me exactly what authentication step is required.
+- Do not make any code changes.
+- Wait for authentication and then continue.
+
+4. Before pushing:
+- Verify node_modules is ignored.
+- Verify dist is ignored.
+- Verify .env files are ignored.
+- Create or update .gitignore if necessary.
+
+5. Create an initial commit message:
+Initial launch foundation for robertbolgar.dev
+
+6. After push:
+- Confirm the repository exists.
+- Confirm the branch was pushed successfully.
+- Provide the GitHub URL.
+- Summarize any files changed during setup.
+
+Do not modify the website design or content.
+Only perform GitHub repository setup and backup.
+
+==================================================
+PROMPT 5
+AI SEARCH FOUNDATION
+==================================================
+
+[ACTUAL PROMPT]
+
+Improve the AI-search foundation of robertbolgar.dev.
+
+Goal:
+
+Help AI systems and search engines clearly understand:
+- Who Robert Bolgar is
+- What robertbolgar.dev is
+- What the YouTube channel is about
+- What projects are being built
+- Why the website exists
+
+Do not redesign the site.
+Do not add new pages.
+Do not add a blog.
+Do not add a newsletter.
+Do not add accounts.
+Focus on structured information.
+
+1. ADD JSON-LD SCHEMA
+
+Add schema markup to the homepage.
+
+Include:
+Person
+Website
+Organization (personal brand)
+
+Use information available on the site.
+
+Person name: Robert Bolgar
+Website: https://robertbolgar.dev
+Description: Robert Bolgar publicly documents the process of building internet products using modern AI tools. The website serves as the home base for videos, projects, experiments, launches, and development updates.
+
+2. IMPROVE META TAGS
+
+Enhance SEO metadata.
+
+Title: Robert Bolgar | Building Publicly With AI
+
+Description: Follow Robert Bolgar as he builds real internet products using modern AI tools and documents the process through videos, projects, experiments, launches, and lessons learned.
+
+Add:
+- Open Graph tags
+- Twitter Card tags
+- canonical URL
+
+3. ADD A "WHAT THIS SITE IS" SECTION
+
+Place directly above the footer.
+
+Heading: What Is RobertBolgar.dev?
+
+Body: RobertBolgar.dev is the public home base for Robert Bolgar's product-building journey. The site documents videos, projects, experiments, launches, mistakes, lessons, and progress while building real internet products with modern AI tools. Unlike coding tutorial channels or AI news sites, the focus is on documenting the complete process of creating and shipping products publicly.
+
+This section should look clean and match the design.
+
+4. IMPROVE llms.txt
+
+Expand llms.txt with structured sections.
+
+Include:
+# Robert Bolgar - Who Robert Bolgar is
+# Website Purpose - What the website exists for
+# YouTube Channel - What content is published
+# Projects - Current projects
+# Audience - Who the content is for
+# Topics - AI-assisted product development, Public building, Startup experiments, Product launches, Project documentation, Creator tools, Internet businesses
+
+Keep language plain and factual.
+
+5. IMPROVE CONTENT CLARITY
+
+Review homepage copy. Where appropriate:
+- Use "Robert Bolgar" instead of only "I"
+- Use project names explicitly
+- Use descriptive language
+
+Goal: Allow both humans and AI systems to quickly understand the website.
+
+6. VERIFY
+
+After implementation verify:
+- Schema is valid
+- Metadata exists
+- Canonical URL exists
+- llms.txt loads correctly
+- Site remains responsive
+
+Provide a summary of all AI-search improvements made.
+
+==================================================
+PROMPT 6
+PROMPT FILE FOUNDATION
+==================================================
+
+[ACTUAL PROMPT]
+
+Create the prompt file foundation for future episodes.
+
+Requirements:
+
+1. Create: public/prompts/
+
+2. Create: public/prompts/README.txt
+
+Content: This directory contains the prompts used during the public building process documented on the Robert Bolgar YouTube channel. Prompts are organized by episode and project. These files are provided for educational purposes and to document the exact AI-assisted workflow used during development.
+
+3. Create: public/prompts/ep01/
+
+4. Create: public/prompts/ep01/episode-01-prompts.txt
+
+Add a placeholder heading: Episode 1, Building RobertBolgar.dev, Prompt archive coming soon.
+
+5. Do not add navigation links yet.
+6. Do not add download buttons yet.
+7. Only create the file structure and commit it.
+
+After completion:
+- Verify files load publicly.
+- Provide the URLs for each file.
+
+==================================================
+EPISODE TIMELINE
+==================================================
+
+1. Initial Website Foundation
+- Created React + Vite project structure
+- Built all section components (Nav, Hero, Videos, Projects, Devlog, About, Footer)
+- Implemented CSS with dark theme and premium styling
+- Added SEO metadata, robots.txt, sitemap.xml, llms.txt
+- Resolved Node.js compatibility issues by downgrading Vite and plugins
+
+2. Hero and Design Refinement
+- Increased hero padding and headline size
+- Added subtle background radial gradients with orange glow
+- Enhanced card hover effects with lift, border glow, and translateY
+- Improved typography hierarchy across all elements
+- Added orange eyebrow labels to all section headings
+- Removed restrictive borders for cinematic feel
+- Increased vertical spacing between sections
+
+3. Layout and Alignment Improvements
+- Centered all section headings and intro paragraphs
+- Added max-width containers to card grids
+- Centered devlog and about content within containers
+- Balanced footer alignment
+- Added mobile responsiveness adjustments
+
+4. GitHub Repository Setup
+- Created public repository: RobertBolgar/robertbolgar-dev
+- Updated .gitignore to include .env files
+- Committed and pushed initial codebase
+- Verified repository exists and is accessible
+
+5. AI Search Foundation
+- Added JSON-LD schema markup (Person, WebSite, Organization)
+- Enhanced meta tags with canonical URL
+- Created "What This Site Is" section above footer
+- Expanded llms.txt with structured sections
+- Improved content clarity using "Robert Bolgar" instead of "I"
+
+6. Prompt File Foundation
+- Created public/prompts/ directory structure
+- Added README.txt explaining prompt archive purpose
+- Created episode-01-prompts.txt placeholder
+
+==================================================
+FILES CREATED
+==================================================
+
+Core Application:
+- src/App.jsx - Main page composition
+- src/App.css - Custom CSS with dark theme and premium styling
+- src/main.jsx - React entry point
+- index.html - HTML with SEO metadata and Google Fonts
+
+Components:
+- src/components/Nav.jsx - Navigation with logo, links, and CTA
+- src/components/Hero.jsx - Hero section with eyebrow, headline, buttons
+- src/components/Videos.jsx - Video cards with episode, title, description, status
+- src/components/Projects.jsx - Project cards with name, description, status
+- src/components/Devlog.jsx - Devlog entries with bullet points
+- src/components/About.jsx - About section with two paragraphs
+- src/components/Footer.jsx - Footer with brand text and links
+- src/components/WhatIsSite.jsx - Site explanation section
+
+Configuration:
+- package.json - Project dependencies and scripts
+- vite.config.js - Vite configuration
+- eslint.config.js - ESLint configuration
+
+Public Files:
+- public/robots.txt - SEO robots file
+- public/sitemap.xml - SEO sitemap
+- public/llms.txt - LLM-readable content
+- public/prompts/README.txt - Prompt archive documentation
+- public/prompts/ep01/episode-01-prompts.txt - Episode 1 prompt archive
+
+==================================================
+LESSONS LEARNED
+==================================================
+
+1. Node.js Compatibility
+- Initial Vite version was incompatible with Node.js 22.11.0
+- Solution: Downgraded Vite to 5.4.11 and @vitejs/plugin-react to 4.3.4
+- Always check Node.js version compatibility before installing dependencies
+
+2. Design Hierarchy
+- Typography hierarchy is critical for premium feel
+- Hero should be largest, section headings second, card titles third
+- Consistent spacing between sections creates breathing room
+- Subtle background effects add depth without visual clutter
+
+3. Alignment and Centering
+- Centering section headings and intro text creates balance
+- Card grids need max-width containers to prevent awkward layouts
+- Mobile responsiveness requires explicit media query adjustments
+- Using margin: 0 auto is cleaner than hard-coded margins
+
+4. AI Search Optimization
+- JSON-LD schema helps search engines understand content structure
+- Canonical URLs prevent duplicate content issues
+- Third-person language ("Robert Bolgar" vs "I") improves clarity for AI systems
+- Structured llms.txt with clear sections aids LLM understanding
+
+5. Version Control
+- .gitignore should always include node_modules, dist, and .env files
+- Public repositories need careful attention to sensitive data
+- Commit messages should be descriptive but concise
+- GitHub integration enables automatic deployment workflows
+
+==================================================
+END OF EPISODE 1
+==================================================
