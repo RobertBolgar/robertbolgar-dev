@@ -1,0 +1,6 @@
+Hero Section Prompt
+
+Prompt archive for the Episode 1 hero section and brand messaging refinements.
+
+Full episode archive:
+/prompts/ep01/episode-01-prompts.txt
