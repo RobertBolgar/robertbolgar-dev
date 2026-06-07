@@ -9,16 +9,10 @@ const Videos = () => {
       description: 'Turning robertbolgar.dev from a placeholder site into the public home base for my building journey.',
       youtubeUrl: 'https://youtube.com',
       videoId: null,
-      prompts: [
-        {
-          title: 'Website Build Thread Prompt',
-          file: '/prompts/ep01/website-build-thread.txt'
-        },
-        {
-          title: 'Hero Section Prompt',
-          file: '/prompts/ep01/hero-section.txt'
-        }
-      ]
+      promptFile: {
+        title: 'Episode 1 Prompts',
+        file: '/prompts/ep01/episode-01-prompts.txt'
+      }
     }
   ];
 
@@ -61,17 +55,15 @@ const Videos = () => {
                 Watch on YouTube
               </a>
               <div className="video-prompts">
-                <h4 className="video-prompts-heading">Prompts Used This Episode</h4>
+                <h4 className="video-prompts-heading">Episode Prompt File</h4>
                 <div className="video-prompt-list">
-                  {episode.prompts.map((prompt) => (
-                    <div key={prompt.file} className="video-prompt">
-                      <span>{prompt.title}</span>
-                      <div className="video-prompt-actions">
-                        <a href={prompt.file} target="_blank" rel="noreferrer">View</a>
-                        <a href={prompt.file} download>Download</a>
-                      </div>
+                  <div className="video-prompt">
+                    <span>{episode.promptFile.title}</span>
+                    <div className="video-prompt-actions">
+                      <a href={episode.promptFile.file} target="_blank" rel="noreferrer">View</a>
+                      <a href={episode.promptFile.file} download>Download</a>
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
