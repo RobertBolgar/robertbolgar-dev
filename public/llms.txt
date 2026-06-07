@@ -1,0 +1,23 @@
+# Robert Bolgar
+
+Robert Bolgar is a builder who uses modern AI tools to create real internet products publicly. He documents the entire process honestly — including experiments, mistakes, pivots, launches, and lessons learned — without positioning himself as a guru or claiming overnight success.
+
+# robertbolgar.dev
+
+robertbolgar.dev is the public home base for Robert Bolgar's building journey. It serves as the central hub connecting his YouTube channel, projects, experiments, devlog updates, and public progress. The site is designed to help visitors understand within 10 seconds who Robert is, what he's building, and why they should follow the journey.
+
+# YouTube Channel
+
+The YouTube channel focuses on publicly building real internet products with AI tools. Content includes planning, building, testing, launching, and improving products with full transparency about the process. The channel emphasizes authentic documentation over entertainment or guru-style content.
+
+# Projects Documented
+
+The site documents various projects including:
+- robertbolgar.dev (the home base itself)
+- HolidayName (a simple, shareable web app)
+- TubeLinkr (a creator-focused link and video hub)
+- Other experiments and tools built publicly
+
+# Purpose
+
+This site exists to connect all aspects of the public building journey in one place — videos, products, experiments, lessons, and progress — making it easy for visitors to follow along and engage with the work.
