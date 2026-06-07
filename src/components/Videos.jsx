@@ -7,8 +7,8 @@ const Videos = () => {
       title: 'Building My Website Live With AI',
       date: 'June 2026',
       description: 'Turning robertbolgar.dev from a placeholder site into the public home base for my building journey.',
-      youtubeUrl: 'https://youtube.com',
-      videoId: null,
+      youtubeUrl: 'https://www.youtube.com/watch?v=JQZ6aM1zLXs',
+      videoId: 'JQZ6aM1zLXs',
       promptFiles: [
         {
           title: 'The Prompt That Started Episode 01',
