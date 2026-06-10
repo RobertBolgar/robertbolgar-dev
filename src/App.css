@@ -236,8 +236,16 @@ a:hover {
   font-size: 1.05rem;
   color: var(--muted);
   max-width: 520px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 1.5rem;
   line-height: 1.75;
+}
+
+.hero-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--muted2);
+  letter-spacing: 0.08em;
+  margin-bottom: 3rem;
 }
 
 .hero-buttons {
