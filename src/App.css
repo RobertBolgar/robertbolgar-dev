@@ -111,20 +111,110 @@ a:hover {
   color: var(--white);
 }
 
+/* Hamburger Button */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 5px;
+}
+
+.nav-hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-hamburger:hover .nav-hamburger-line {
+  background: var(--orange);
+}
+
+/* Mobile Menu */
+.nav-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--charcoal);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.nav-mobile-menu-open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-mobile-link {
+  padding: 1rem 1.5rem;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(36, 36, 36, 0.5);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-mobile-link:hover {
+  background: var(--card);
+  color: var(--orange);
+}
+
+.nav-mobile-link:last-of-type {
+  border-bottom: none;
+}
+
+.nav-mobile-cta {
+  padding: 1rem 1.5rem;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.nav-mobile-cta:hover {
+  background: #d64d15;
+}
+
 @media (max-width: 768px) {
   .nav-container {
-    flex-direction: column;
-    gap: 1rem;
+    padding: 0.875rem 1.5rem;
   }
 
-  .nav-links {
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  .nav-links-desktop,
+  .nav-cta-desktop {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-container {
+    justify-content: space-between;
   }
 
   .hero {
-    padding: 10rem 1.5rem 6rem;
+    padding: 7rem 1.5rem 6rem;
   }
 
   .hero::before {
