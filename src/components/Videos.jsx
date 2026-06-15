@@ -1,28 +1,7 @@
 import React from 'react';
+import { episodes } from '../data/episodes';
 
 const Videos = () => {
-  const episodes = [
-    {
-      episode: 'EP 01',
-      title: 'Building My Website Live With AI',
-      date: 'June 2026',
-      description: 'Turning robertbolgar.dev from a placeholder site into the public home base for my building journey.',
-      youtubeUrl: 'https://www.youtube.com/watch?v=JQZ6aM1zLXs',
-      videoId: 'JQZ6aM1zLXs',
-      promptFiles: [
-        {
-          title: 'The Prompt That Started Episode 01',
-          description: 'Initial ChatGPT planning prompt',
-          file: '/prompts/ep01/initial-chatgpt-prompt.txt'
-        },
-        {
-          title: 'Complete Episode 01 Prompt Archive',
-          description: '10 Devin prompts used to build and polish the site',
-          file: '/prompts/ep01/episode-01-prompts.txt'
-        }
-      ]
-    }
-  ];
 
   const getThumbnailUrl = (videoId) => {
     if (videoId) {

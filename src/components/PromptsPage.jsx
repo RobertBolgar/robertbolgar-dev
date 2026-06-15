@@ -1,4 +1,5 @@
 import React from 'react';
+import { promptsData } from '../data/prompts';
 
 const PromptsPage = () => {
   return (
@@ -12,23 +13,27 @@ const PromptsPage = () => {
           </p>
         </header>
 
-        <section className="prompts-section">
-          <p className="prompts-section-label">Episode 01</p>
-          
-          <div className="prompts-card">
-            <h2 className="prompts-card-title">The Prompt That Started Episode 01</h2>
-            <p className="prompts-card-description">
-              The original ChatGPT prompt used to define the robertbolgar.dev rebuild, establish the public-building direction, and generate the Devin prompts used throughout the episode.
-            </p>
-            <div className="prompts-buttons">
-              <a href="/prompts/ep01/initial-chatgpt-prompt.txt" target="_blank" rel="noreferrer" className="prompts-btn prompts-btn-primary">View</a>
-              <a href="/prompts/ep01/initial-chatgpt-prompt.txt" download className="prompts-btn prompts-btn-secondary">Download</a>
+        {promptsData.map((item) => (
+          <section key={item.label} className="prompts-section">
+            <p className="prompts-section-label">{item.label}</p>
+            
+            <div className="prompts-card">
+              <h2 className="prompts-card-title">{item.title}</h2>
+              <p className="prompts-card-description">
+                {item.description}
+              </p>
+              <div className="prompts-buttons">
+                <a href={item.primaryPrompt.file} target="_blank" rel="noreferrer" className="prompts-btn prompts-btn-primary">View</a>
+                <a href={item.primaryPrompt.file} download className="prompts-btn prompts-btn-secondary">Download</a>
+              </div>
+              {item.secondaryPrompt && (
+                <a href={item.secondaryPrompt.file} className="prompts-secondary-link">
+                  {item.secondaryPrompt.title} →
+                </a>
+              )}
             </div>
-            <a href="/prompts/ep01/episode-01-prompts.txt" className="prompts-secondary-link">
-              Complete Episode 01 Prompt Archive →
-            </a>
-          </div>
-        </section>
+          </section>
+        ))}
       </div>
     </div>
   );

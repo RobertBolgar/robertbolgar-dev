@@ -1,0 +1,530 @@
+Episode 02 Prompts
+Robert Bolgar — Building Publicly With AI
+
+Latest Video: https://www.youtube.com/watch?v=M0OvYlr-Pbs
+
+Overview:
+This file contains the prompts used during Episode 2 while fixing TubeLinkr Creator Hub video visibility and implementing username gating.
+
+Prompts:
+
+------------------------------------------------------------
+
+1. Initial Audit Request
+
+[ACTUAL PROMPT]
+
+TUBELINKR CREATOR HUB VIDEO VISIBILITY AUDIT
+
+IMPORTANT:
+Do not modify any code.
+Analysis only.
+Do not implement the fix yet.
+Return the audit first.
+
+Goal:
+Determine whether TubeLinkr Creator Hubs are exposing YouTube videos that should not appear publicly.
+
+Background:
+While testing a Creator Hub, I noticed videos appearing that are currently marked as Unlisted on YouTube.
+
+Creator Hubs should only display PUBLIC videos only.
+
+We need to determine:
+- Whether this is a real bug
+- Why it happens
+- Which users could be affected
+- The safest production fix
+
+Tasks:
+
+1. Identify the complete Creator Hub video flow.
+
+Trace:
+- YouTube connection
+- OAuth scopes
+- Sync process
+- Video storage
+- Hub display logic
+
+2. Determine which YouTube API endpoints are being used.
+
+For each endpoint found, provide:
+- Endpoint name
+- Purpose
+- Data returned
+- Whether privacy status is available
+
+Specifically check whether the sync uses:
+- channels.list
+- playlistItems.list from the uploads playlist
+- videos.list
+- search.list
+- any analytics/reporting endpoints
+
+Important:
+If playlistItems.list is used from the uploads playlist, determine whether it can return videos from the authenticated owner's uploads regardless of public visibility, and whether privacy is checked separately.
+
+3. Determine whether TubeLinkr currently stores any of the following:
+- privacyStatus
+- visibility
+- status.privacyStatus
+- public/private/unlisted indicators
+
+Show exact database fields, schema columns, model fields, API response mappings, or stored JSON fields if present.
+
+4. Determine how videos are selected for display on a Creator Hub.
+
+Provide:
+- Query logic
+- Filtering logic
+- Sort order
+- Any conditions applied
+- Whether the display query filters by public visibility
+
+5. Determine whether:
+- Public videos appear
+- Unlisted videos appear
+- Private videos appear
+
+Explain why for each.
+
+6. If unlisted videos are appearing, identify exactly where the failure occurs.
+
+Possible failure points:
+- API returns unlisted videos and no filtering exists
+- Privacy status exists but is ignored
+- Database field exists but display query ignores it
+- Sync process stores everything
+- Hub display logic assumes all synced videos are public
+
+7. Assess impact.
+
+Answer:
+- Could creators accidentally expose unlisted videos?
+- Could private videos ever appear?
+- Is this affecting all users or only certain users?
+- Does this affect only connected YouTube channels, only Creator Hubs, or other public surfaces too?
+
+8. Recommend the safest production fix.
+
+Requirements:
+- Creator Hubs should display PUBLIC videos only.
+- Unlisted videos should never appear publicly.
+- Private videos should never appear publicly.
+- The fix should be backward-compatible with existing synced videos.
+- The fix should not delete existing video records unless explicitly justified.
+- Prefer adding/storing privacy status and filtering public surfaces.
+- Include whether a backfill/resync is needed for existing videos.
+
+9. Search for similar visibility leaks elsewhere in TubeLinkr.
+
+Check:
+- Public Proof Pages
+- Analytics
+- Video selectors
+- Placement systems
+- Video dropdowns
+- Creator tools
+- Admin views
+- Any public API endpoints returning videos
+
+Determine whether unlisted/private videos may be leaking elsewhere.
+
+10. Deliver:
+
+- Executive summary
+- Findings
+- Root cause
+- Affected files/functions
+- Current API endpoints used
+- Current stored video fields
+- Current display query/filtering
+- Public/unlisted/private behavior
+- Risk assessment
+- Recommended production fix
+- Backfill/resync recommendation
+- Estimated implementation complexity
+- Suggested next prompt for implementation
+
+DO NOT CHANGE CODE.
+AUDIT ONLY.
+
+------------------------------------------------------------
+
+2. API Response Verification
+
+[ACTUAL PROMPT]
+
+One final verification before implementation.
+
+Show actual YouTube API responses from the current TubeLinkr integration.
+
+For a known public video and a known unlisted video:
+
+1. Show playlistItems.list response.
+2. Show videos.list response.
+3. Confirm whether unlisted videos are returned by the uploads playlist.
+4. Confirm whether status.privacyStatus is currently available.
+5. Confirm whether a simple display-layer filter would fully solve the Creator Hub issue.
+
+Do not implement anything.
+Evidence only.
+
+------------------------------------------------------------
+
+3. Implementation Request
+
+[ACTUAL PROMPT]
+
+Implement the Creator Hub video visibility fix.
+
+IMPORTANT:
+
+* Modify only what is necessary.
+* Do not add database migrations.
+* Do not delete existing records.
+* Do not implement caching/backfill yet.
+* Goal is production-safe display filtering.
+
+Problem:
+Creator Hubs may publicly display YouTube videos that are Unlisted because the current YouTube API calls fetch uploads playlist videos but do not request or filter by `status.privacyStatus`.
+
+Required fix:
+
+1. In [functions/api/public-links-by-subdomain.js](cci:7://file:///c:/Users/rober/OneDrive/Desktop/tubelinkr/functions/api/public-links-by-subdomain.js:0:0-0:0), update all `videos.list` calls used for public Creator Hub display to request:
+
+`part=snippet,statistics,status` 
+
+or, where statistics are not needed:
+
+`part=snippet,status` 
+
+2. For the Featured Video:
+
+* Fetch the selected `featured_video_id` with `status`.
+* Only display it if:
+
+`item.status?.privacyStatus === "public"` 
+
+* If the featured video is missing, private, unlisted, deleted, or has unknown privacy status, do not display it.
+* Fall back to auto-selecting from public videos if current logic supports fallback.
+
+3. For More Videos:
+
+* After fetching video details with `videos.list`, filter results server-side.
+* Only include videos where:
+
+`item.status?.privacyStatus === "public"` 
+
+* Exclude all videos where privacy status is:
+
+  * `unlisted` 
+  * `private` 
+  * missing
+  * unknown
+
+4. Do not expose `privacy_status` publicly unless needed for debugging.
+   The public API response should simply omit non-public videos.
+
+5. Add defensive handling:
+
+* If YouTube does not return `status`, treat the video as non-public.
+* If all videos are filtered out, return an empty videos array.
+* Do not throw user-facing errors just because no public videos are available.
+
+6. Check for duplicate Creator Hub video-fetch logic in this same file and apply the same public-only filtering anywhere videos are returned to the public hub.
+
+7. Testing:
+
+* Confirm public videos still appear.
+* Confirm unlisted videos no longer appear.
+* Confirm selected featured unlisted video does not appear.
+* Confirm More Videos does not include unlisted/private videos.
+* Confirm the Creator Hub page does not break if no public videos are available.
+
+Deliver:
+
+* Files changed
+* Exact logic added
+* Confirmation that only PUBLIC videos appear on public Creator Hubs
+* Any remaining risk or follow-up recommendations
+
+Do not implement database storage, migrations, caching, or backfill in this pass.
+
+------------------------------------------------------------
+
+4. Fallback Logic Verification
+
+[ACTUAL PROMPT]
+
+Please verify whether "existing auto-selection logic" only selects from public videos now.
+
+Specifically check:
+- If featuredVideo is null because selected featured_video_id is unlisted
+- Does fallback auto-selection use the newly filtered public-only video list?
+- Or does it select from link-attached videos without checking privacy?
+
+Do not modify code unless fallback still allows unlisted videos.
+
+------------------------------------------------------------
+
+5. Complete Privacy Fix
+
+[ACTUAL PROMPT]
+
+Before merge, finish the privacy fix completely.
+
+Current issue:
+Links with unlisted `video_id` now lose video metadata, but they may still be selected as the featured link by fallback auto-selection.
+
+Required behavior:
+Any link attached to a non-public YouTube video must not be selected for video-based public display.
+
+Please update fallback auto-selection so it only selects links whose attached video is confirmed public.
+
+Requirements:
+- If a link has `video_id`, only treat it as video-display eligible when that video exists in `videoMetadataMap`.
+- If the video is unlisted/private/missing/unknown, do not use that link as the featured video/link fallback.
+- Do not hide the regular link itself unless existing behavior already does that.
+- Only prevent non-public videos from being promoted/displayed as video content.
+- Keep the regular Smart Link visible as a normal link if appropriate.
+- Do not add migrations or database changes.
+
+Then report:
+- Exact fallback logic changed
+- Whether unlisted video links can still become featured
+- Whether public video links still work
+- Whether normal non-video links are unaffected
+
+------------------------------------------------------------
+
+6. Username and Public Identity Handling Audit
+
+[ACTUAL PROMPT]
+
+Perform a complete read-only audit of TubeLinkr username and public identity handling.
+
+IMPORTANT:
+Do NOT modify any code.
+Do NOT create migrations.
+Do NOT change database records.
+Do NOT create pull requests.
+
+Goal:
+Understand exactly how usernames currently work, who can reserve them, where they are used, and whether free users can block premium usernames.
+
+Audit the following:
+
+1. Database Schema
+- Find all username-related fields.
+- Identify display_name, username, handle, slug, creator_slug, or similar fields.
+- Show which tables contain them.
+- Show constraints (unique, nullable, indexes, etc.).
+
+2. User Plans
+- Determine whether username availability is gated by plan.
+- Identify all plan checks related to usernames.
+- Identify Free, Pro, Founder, Admin behavior.
+
+3. Username Creation Flow
+- Trace the full flow when a user creates or updates a username.
+- Identify frontend validation.
+- Identify backend validation.
+- Identify database validation.
+
+4. Public Routes
+- Find all routes that use usernames.
+- Determine whether any current public pages depend on usernames.
+- Identify any routes that would break if username became null.
+
+5. Creator Hubs
+- Determine whether Creator Hubs use usernames.
+- Determine whether hub URLs depend on usernames.
+- Show exact URL structure.
+
+6. Smart Links
+- Determine whether Smart Links use usernames.
+- Show exact URL structure.
+
+7. Proof Pages
+- Determine whether Proof pages use usernames.
+- Show exact URL structure.
+
+8. Existing User Data
+- Determine whether free users can currently have usernames.
+- Estimate how many users currently have usernames by plan.
+- Identify whether free users are occupying usernames.
+
+9. Reserved Names
+- Determine whether a reserved username list exists.
+- If yes, show location and contents.
+- If no, explicitly state that none exists.
+
+10. Security Review
+- Can a free user reserve a username?
+- Can a user bypass frontend restrictions and set a username through API calls?
+- Is uniqueness enforced server-side?
+- Is normalization enforced server-side?
+- Are route collisions possible?
+
+11. Downgrade Behavior
+- What happens to usernames when a Pro user downgrades?
+- Is there any retention or grace period logic?
+
+12. Findings Summary
+
+Provide:
+
+A. Current behavior
+B. Risks found
+C. Severity of each risk
+D. Recommended fixes (recommendations only, no code changes)
+E. Any areas that should not be changed due to dependency risks
+
+Again:
+Read-only audit only.
+No code changes.
+No migrations.
+No commits.
+
+------------------------------------------------------------
+
+7. Username Usage Audit - Confirmed vs Auto-generated
+
+[ACTUAL PROMPT]
+
+Read-only audit:
+
+How many active usernames are actually user-selected vs auto-generated?
+
+For every user:
+
+- username
+- username_confirmed_by_user
+- plan
+
+Provide counts:
+
+1. Total users
+2. Free users
+3. Free users with username_confirmed_by_user = 1
+4. Free users with username_confirmed_by_user = 0
+5. Pro users
+6. Founder users
+
+Goal:
+
+Determine whether free users are actively claiming usernames or whether most usernames are simply auto-generated during signup.
+
+------------------------------------------------------------
+
+8. Username Gating Fix Implementation
+
+[ACTUAL PROMPT]
+
+Implement a low-risk username gating fix for TubeLinkr.
+
+Context:
+Read-only audit showed usernames are required internally and legacy routes still depend on them. Existing user count is small:
+- founder confirmed username: 2
+- founder auto-generated username: 1
+- free auto-generated username: 2
+- free confirmed username: 1
+
+Do not migrate existing users.
+Do not delete usernames.
+Do not make username nullable.
+Do not change legacy routing.
+Do not break Smart Links, Proofs, Creator Hubs, or worker routing.
+
+Goal:
+Prevent future free users from claiming/changing custom usernames while preserving existing usernames.
+
+Requirements:
+
+1. Backend enforcement
+- In the username update endpoint, block username changes unless the user has Pro, Pro Plus, Founder, or Admin access.
+- Use authoritative backend plan/founder/admin status.
+- Do not trust frontend plan state.
+- If a free user attempts to update username directly through the API, return a clear 403 response.
+- Existing free users may keep their current username, but cannot change it.
+
+2. Username availability endpoint
+- Prevent free users from checking/claiming usernames if that endpoint is tied to username setup.
+- If needed, return a response that says custom usernames require Pro.
+- Do not expose username availability as a free reservation mechanism.
+
+3. Signup/sync flow
+- Continue auto-generating usernames if the database requires username NOT NULL.
+- Auto-generated usernames should remain internal for free users.
+- Do not set username_confirmed_by_user = 1 for free users during signup.
+- Do not let free users confirm usernames during setup.
+
+4. Frontend
+- Display Name remains editable for all users.
+- Username field should be shown as Pro-only or disabled for free users.
+- Add copy:
+  "Custom usernames are available on Pro."
+- Pro/Founder users can edit username normally.
+- Free users should not be forced through username setup if they cannot claim one.
+
+5. Existing users
+- No migration.
+- No cleanup.
+- Do not clear the one existing free confirmed username.
+- Preserve existing data.
+
+6. Tests
+- Free user cannot update username through UI.
+- Free user cannot update username through API.
+- Free user can still update display name.
+- Pro user can update username.
+- Founder user can update username.
+- Duplicate usernames are still rejected.
+- Reserved usernames are still rejected.
+- Existing public links still resolve.
+
+Return:
+- Files changed
+- Exact backend plan check added
+- Exact frontend UI behavior changed
+- Test results
+- Any risk areas
+
+------------------------------------------------------------
+
+9. Verification Tests
+
+[ACTUAL PROMPT]
+
+Good. Before merging, run the actual verification tests.
+
+Do not add new features.
+
+Please verify:
+
+1. Free user cannot update username from Settings UI.
+2. Free user cannot update username through direct API request.
+3. Free user cannot check username availability through direct API request.
+4. Free user can still update display name.
+5. Free user can access dashboard without being forced into username setup.
+6. Pro user can access username setup.
+7. Pro user can update username.
+8. Founder user can update username.
+9. Duplicate username is still rejected.
+10. Reserved username is still rejected.
+11. Existing legacy smart link routes still resolve.
+12. Existing public_code smart links still resolve.
+13. Existing proof pages still resolve.
+14. Existing creator hubs still resolve.
+
+Also inspect for any redirect loop risk in:
+- SetupUsernamePage
+- UsernameSetupRoute in App.tsx
+
+Return the test results and confirm whether this is safe to merge.
+
+------------------------------------------------------------
+
+END OF EPISODE 02 PROMPTS
