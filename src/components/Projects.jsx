@@ -10,13 +10,13 @@ const Projects = () => {
     {
       name: 'HolidayName',
       description: 'A simple, shareable web app being rebuilt from scratch with a cleaner foundation.',
-      status: 'Planned',
+      status: 'Building Now',
       link: 'https://holidayname.com'
     },
     {
       name: 'TubeLinkr',
       description: 'A creator-focused link and video hub project built around YouTube workflows.',
-      status: 'Existing Project',
+      status: 'Live Project',
       link: 'https://rob.tubelinkr.com/invite/c1'
     }
   ];

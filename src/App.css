@@ -724,9 +724,29 @@ a:hover {
   display: inline-block;
 }
 
+.project-status-building-now {
+  background: rgba(240, 90, 26, 0.2);
+  color: var(--orange);
+}
+
 .project-status-in-progress {
   background: rgba(240, 90, 26, 0.2);
   color: var(--orange);
+}
+
+.project-status-live-product {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.project-status-live-project {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.project-status-existing-project {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
 }
 
 .project-status-planned {
@@ -734,9 +754,9 @@ a:hover {
   color: var(--muted);
 }
 
-.project-status-existing-project {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
+.project-status-archived {
+  background: rgba(119, 119, 119, 0.2);
+  color: var(--muted);
 }
 
 /* Devlog */
