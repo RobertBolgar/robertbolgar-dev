@@ -363,7 +363,7 @@ a:hover {
 
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   justify-content: center;
   max-width: 1200px;
@@ -581,6 +581,10 @@ a:hover {
 .video-prompt-description {
   font-size: 0.7rem;
   color: #888;
+  line-height: 1.4;
+  max-width: 200px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .video-prompt-actions {
@@ -968,7 +972,11 @@ a:hover {
     padding: 5rem 1.5rem;
   }
 
-  .video-grid,
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
   .project-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1025,6 +1033,10 @@ a:hover {
 
   .section-container {
     padding: 4rem 1rem;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
   }
 
   .video-card,

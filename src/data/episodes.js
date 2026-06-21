@@ -1,5 +1,20 @@
 export const episodes = [
   {
+    episode: 'EP 03',
+    title: 'I Found an App I Built Years Ago... It Needs Help',
+    date: 'June 2026',
+    description: 'Revisiting HolidayName.com years after building it, testing the desktop and mobile experience, auditing the design, features, shareability, and overall product direction, then using AI to identify what needs to improve before rebuilding it from scratch.',
+    youtubeUrl: 'https://www.youtube.com/watch?v=G4MKPFnw4p0',
+    videoId: 'G4MKPFnw4p0',
+    promptFiles: [
+      {
+        title: 'HolidayName.com Complete Rebuild Audit Prompt',
+        description: 'ChatGPT audit prompt for HolidayName.com',
+        file: '/prompts/ep03/holidayname-complete-rebuild-audit-prompt.txt'
+      }
+    ]
+  },
+  {
     episode: 'EP 02',
     title: 'Fixing TubeLinkr Bugs With AI',
     date: 'June 2026',
