@@ -6,6 +6,8 @@ export const episodes = [
     description: 'Revisiting HolidayName.com years after building it, testing the desktop and mobile experience, auditing the design, features, shareability, and overall product direction, then using AI to identify what needs to improve before rebuilding it from scratch.',
     youtubeUrl: 'https://www.youtube.com/watch?v=G4MKPFnw4p0',
     videoId: 'G4MKPFnw4p0',
+    promptPageTitle: 'HolidayName.com Rebuild Audit Prompt',
+    promptPageDescription: 'The ChatGPT prompt used to audit HolidayName.com as a product designer, UX designer, growth marketer, SEO specialist, AI-search specialist, and SaaS founder.',
     promptFiles: [
       {
         title: 'HolidayName.com Complete Rebuild Audit Prompt',
@@ -21,6 +23,8 @@ export const episodes = [
     description: 'Fixing Creator Hub video visibility leaks and implementing username gating inside TubeLinkr.',
     youtubeUrl: 'https://www.youtube.com/watch?v=M0OvYlr-Pbs',
     videoId: 'M0OvYlr-Pbs',
+    promptPageTitle: 'TubeLinkr Bug Fix Prompts',
+    promptPageDescription: 'The actual Devin prompts used to fix Creator Hub video visibility and username gating issues inside TubeLinkr.',
     promptFiles: [
       {
         title: 'Complete Episode 02 Prompt Archive',
@@ -36,6 +40,8 @@ export const episodes = [
     description: 'Turning robertbolgar.dev from a placeholder site into the public home base for my building journey.',
     youtubeUrl: 'https://www.youtube.com/watch?v=JQZ6aM1zLXs',
     videoId: 'JQZ6aM1zLXs',
+    promptPageTitle: 'The Prompt That Started Episode 01',
+    promptPageDescription: 'The original ChatGPT prompt used to define the robertbolgar.dev rebuild, establish the public-building direction, and generate the Devin prompts used throughout the episode.',
     promptFiles: [
       {
         title: 'The Prompt That Started Episode 01',

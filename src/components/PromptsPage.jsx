@@ -1,5 +1,5 @@
 import React from 'react';
-import { promptsData } from '../data/prompts';
+import { episodes } from '../data/episodes';
 
 const PromptsPage = () => {
   return (
@@ -13,23 +13,27 @@ const PromptsPage = () => {
           </p>
         </header>
 
-        {promptsData.map((item) => (
-          <section key={item.label} className="prompts-section">
-            <p className="prompts-section-label">{item.label}</p>
+        {episodes.map((episode) => (
+          <section key={episode.episode} className="prompts-section">
+            <p className="prompts-section-label">{episode.episode}</p>
             
             <div className="prompts-card">
-              <h2 className="prompts-card-title">{item.title}</h2>
+              <h2 className="prompts-card-title">{episode.promptPageTitle || episode.title}</h2>
               <p className="prompts-card-description">
-                {item.description}
+                {episode.promptPageDescription || episode.description}
               </p>
-              <div className="prompts-buttons">
-                <a href={item.primaryPrompt.file} target="_blank" rel="noreferrer" className="prompts-btn prompts-btn-primary">View</a>
-                <a href={item.primaryPrompt.file} download className="prompts-btn prompts-btn-secondary">Download</a>
-              </div>
-              {item.secondaryPrompt && (
-                <a href={item.secondaryPrompt.file} className="prompts-secondary-link">
-                  {item.secondaryPrompt.title} →
-                </a>
+              {episode.promptFiles.length > 0 && (
+                <>
+                  <div className="prompts-buttons">
+                    <a href={episode.promptFiles[0].file} target="_blank" rel="noreferrer" className="prompts-btn prompts-btn-primary">View</a>
+                    <a href={episode.promptFiles[0].file} download className="prompts-btn prompts-btn-secondary">Download</a>
+                  </div>
+                  {episode.promptFiles.length > 1 && (
+                    <a href={episode.promptFiles[1].file} className="prompts-secondary-link">
+                      {episode.promptFiles[1].title} →
+                    </a>
+                  )}
+                </>
               )}
             </div>
           </section>
