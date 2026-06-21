@@ -10,7 +10,8 @@ const Projects = () => {
     {
       name: 'HolidayName',
       description: 'A simple, shareable web app being rebuilt from scratch with a cleaner foundation.',
-      status: 'Planned'
+      status: 'Planned',
+      link: 'https://holidayname.com'
     },
     {
       name: 'TubeLinkr',
