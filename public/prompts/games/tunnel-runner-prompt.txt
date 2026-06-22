@@ -1,0 +1,93 @@
+Tunnel Runner — HTML5 Canvas Game Prompt
+
+This is the exact prompt used to generate the single-file HTML5 canvas arcade game Tunnel Runner.
+
+Build me a single-file HTML5 canvas endless arcade game called "TUNNEL RUNNER." Here are the full specs:
+
+Concept: A top-down neon spaceship that you steer around incoming asteroids. The ship stays on screen and the asteroids fly in from all edges toward the center. It accelerates forever. The aesthetic is retro-arcade neon — deep space black background with cyan, pink, yellow, and green glows.
+
+Fonts: Google Fonts — Orbitron (400/700/900) for all UI, Share Tech Mono for labels and instructions.
+
+Color palette:
+
+- Background: #02020a
+- Neon cyan: #00f5ff — player, tunnel rings, score
+- Neon pink: #ff0080 — boost state, game over, lives
+- Neon yellow: #ffee00 — best score, collectible stars
+- Neon green: #00ff88 — shield
+
+Three screens:
+
+1. Title screen — full background, title "TUNNEL RUNNER" in giant pulsing cyan Orbitron, subtitle "∞ ENDLESS VOID ∞" in pink. A cyan gradient divider line. Instructions in Share Tech Mono listing controls. A glowing cyan LAUNCH button.
+2. HUD (in-game) — top bar with SCORE (cyan), LIVES (pink hearts ♥ ♥ ♥), and BEST (yellow), all in Orbitron. Bottom center: a thin SHIELD progress bar (cyan→green gradient, 160px wide). Both fade in/out on game start/end.
+3. Game Over screen — semi-transparent overlay, "GAME OVER" in pink, a 2×2 stats grid showing SCORE / BEST / DISTANCE / MAX SPEED. A blinking yellow "✦ NEW BEST ✦" label that only shows on a personal best. TRY AGAIN button.
+
+Background: 120 randomly placed twinkling white stars that gently pulse in brightness each frame.
+
+Tunnel effect: 20 elliptical rings drawn in perspective — smallest/faintest in center, largest/brightest near edges — that scroll toward the viewer continuously, speed-linked to game speed. The rings subtly shift position to follow the player's movement (parallax offset scaled by (1 - ring.z) * 0.08).
+
+Player ship:
+
+- Radius 14px
+- Drawn as a triangle fuselage (dark fill #0a0a1a, cyan/pink stroke 2px) rotated to face direction of travel
+- Small ellipse cockpit at the nose, filled cyan or pink when boosting
+- Radial glow behind it at 2.5× radius
+- 18-point motion trail — fading radial gradient dots, cyan normally, pink when boosting
+- Blinks (skips draw every 4 frames) for 90 frames after taking a hit (invincibility window)
+- When shield > 0: animated pulsing green ring at 1.9× radius with glow
+
+Controls (direct follow — not delta drag):
+
+- Touch/drag: ship smoothly chases your finger position (ease factor 0.14 normally, 0.22 boosting). Lift finger → ship coasts to stop
+- Double tap (< 300ms): 350ms boost — ship moves 1.5× faster, trail turns pink, cockpit turns pink
+- Mouse: same as touch — hold and drag, ship follows cursor
+- Arrow keys: nudge an internal target position by 6px/frame
+- Spacebar: boost
+
+Asteroids:
+
+- Irregular polygons, 5–9 sides, radius 10–30px
+- Dark fill #1a0800, orange stroke #ff6622 with glow #ff4400, spinning
+- Semi-transparent hot core (inner polygon at 0.5× radius, 30% opacity)
+- All fly from screen edges aimed roughly at center with slight random angle spread
+- Capped at 28 on screen simultaneously
+- Collision: circle vs circle (radius - 4 tolerance). If shield active → shield depletes, green particle burst. If no shield → lose a life, 90-frame invincibility, pink particle burst. 3 lives total.
+
+Two-layer spawning system (both run every frame on their own intervals):
+
+Solo spawns: one asteroid, interval starts at every 40 frames, tightens to every 18 frames at high distance (Math.max(18, 40 - tier * 3) where tier = floor(distance / 80))
+
+Wave spawns: interval starts every 120 frames, tightens to every 55 (Math.max(55, 120 - tier * 8)). 5 patterns chosen randomly:
+
+- Fan — 3 to 6 evenly spaced across one side, converging inward
+- Ring — simultaneous attack from all 4 sides (1–3 per side, scales with tier)
+- Shotgun — burst of 4–8 from a random corner with wide spread (~1.3 rad)
+- Stream — 4–9 single-file chain staggered 50px apart from one side, tight aim
+- Double/Triple — 2–3 random solos (3rd only at tier > 2)
+
+Stars (collectibles):
+
+- Spawn from top every 220 frames, fall downward
+- Pulsing yellow radial glow, white core
+- Collect → shield += 0.34 (capped at 1.0), score += 50, yellow particle burst
+
+Speed & scoring:
+
+- baseSpeed = 3.5
+- speed = baseSpeed + Math.pow(distance * 0.008, 1.3) — power curve, gentle early, steeper mid-game
+- Speed capped at 18
+- score += dt * speed * 0.5 per frame
+- distance += speed * dt * 0.04 per frame
+- Asteroid velocity scaled by speed / baseSpeed
+- Game Over screen shows max speed reached formatted as "X.Xx"
+
+Particles: Used for engine trail (cyan or pink, 1 particle every 3 frames), boost exhaust (pink, 3 per frame), asteroid destruction (orange, 16 particles), shield hit (green, 20), ship hit (pink, 20), star collect (yellow, 12). Each particle: radial velocity with 0.93 drag, life decreases 0.025/frame, drawn as fading circle.
+
+Architecture:
+
+- Single HTML file, vanilla JS, Canvas 2D API, no dependencies
+- Full-screen canvas with touch-action: none, responsive resize handler
+- Game states: title | playing | dead
+- requestAnimationFrame loop, dt clamped to 3 frames max
+- Personal best tracked in JS variable (session only, no localStorage needed)
+- All object pools (asteroids, stars, particles, tunnelRings) are plain arrays filtered each frame
